@@ -13,7 +13,7 @@ using App1.Adapters;
 
 namespace App1
 {
-    [Activity(Label = "ExercisesListActivity")]
+    [Activity(Label = "Exercises")]
     public class ExercisesListActivity : Activity
     {
         private ListView exerciseListView;
@@ -41,6 +41,13 @@ namespace App1
             var alert = new AlertDialog.Builder(this);
             alert.SetTitle(allExerices[e.Position].Title);
             alert.SetMessage(allExerices[e.Position].Description);
+            alert.SetPositiveButton("Use", (senderAlert, args) => {
+                //Kasuta seda kuidagi WorkoutActivity-s
+            });
+
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
+                return;
+            });
             alert.Show();
         }
     }
