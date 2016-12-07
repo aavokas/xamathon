@@ -49,31 +49,42 @@ namespace App1
 
             FindViews();
 
+            PrepareTimer();
+
             currentEx.Text = Exercises.Exercises["plank"].Title;
             descr.Text = Exercises.Exercises["plank"].Description;
             picture.SetImageResource(Resource.Drawable.Icon);
 
             HandleEvent();
+        }
 
+        private void PrepareTimer()
+        {
+            StartPauseBtn.Enabled = false;
+            StartPauseBtn.Text = "Preparing timer...";
+
+            // Create a timer with a two second interval.
+            aTimer = new System.Timers.Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+			aTimer.Elapsed += async ( sender, e ) => await OnTimedEvent();
+			//aTimer.AutoReset = true; //vb pole vaja
+			//aTimer.Enabled = true; //vb pole vaja
+
+            StartPauseBtn.Enabled = true;
+            StartPauseBtn.Text = "Start";
         }
 
 		private void StartTimer()
 		{
-			// Create a timer with a two second interval.
-			aTimer = new System.Timers.Timer(1000);
-			// Hook up the Elapsed event for the timer. 
-			aTimer.Elapsed += async ( sender, e ) => await OnTimedEvent();
-			aTimer.AutoReset = true;
-			aTimer.Enabled = true;
 			aTimer.Start ();
-
+            StartPauseBtn.Text = "Stop";
             //stopwatch.Start ();
         }
 
         private void StopTimer()
         {
             aTimer.Stop();
-
+            StartPauseBtn.Text = "Start";
             //stopwatch.Stop ();
 
             //await TaskOfTResult_MethodAsync();
