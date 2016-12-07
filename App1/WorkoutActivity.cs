@@ -30,8 +30,9 @@ namespace App1
 
 		private int counter = 1;
 
-		//private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-		private bool toggleStartStop = false;
+        //private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+        //Kas on ikka vaja? https://msdn.microsoft.com/en-us/library/system.diagnostics.stopwatch(v=vs.110).aspx
+        private bool toggleStartStop = false;
 
         private Button StartPauseBtn;
 
@@ -43,9 +44,6 @@ namespace App1
 
             // Create your application here
             Exercises = new ExerciseDb();
-
-
-
 
             SetContentView(Resource.Layout.WorkoutView);
 
@@ -59,7 +57,7 @@ namespace App1
 
         }
 
-		private void SetTimer()
+		private void StartTimer()
 		{
 			// Create a timer with a two second interval.
 			aTimer = new System.Timers.Timer(1000);
@@ -67,10 +65,22 @@ namespace App1
 			aTimer.Elapsed += async ( sender, e ) => await OnTimedEvent();
 			aTimer.AutoReset = true;
 			aTimer.Enabled = true;
-			//aTimer.Start ();
-		}
+			aTimer.Start ();
 
+            //stopwatch.Start ();
+        }
 
+        private void StopTimer()
+        {
+            aTimer.Stop();
+
+            //stopwatch.Stop ();
+
+            //await TaskOfTResult_MethodAsync();
+            //currentEx.Text = "finito";
+
+            //Tee midagi taimeri ajaga - jäta meelde, muuda tekst nulliks?
+        }
 
         private void FindViews()
         {
@@ -91,20 +101,12 @@ namespace App1
 
         private void StartPauseBtn_Click(object sender, EventArgs e)
         {
-
 			if (toggleStartStop) {
-				//stopwatch.Start ();
-				SetTimer ();
-				aTimer.Start ();
+				StartTimer();
 			} else {
-				//stopwatch.Stop ();
-				//aTimer.Stop ();
+                StopTimer();
 			}
 			toggleStartStop = !toggleStartStop;
-
-
-			//await TaskOfTResult_MethodAsync();
-			//currentEx.Text = "finito";
 
             //var alert = new AlertDialog.Builder(this);
             //alert.SetTitle("tere");
