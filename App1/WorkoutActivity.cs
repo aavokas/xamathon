@@ -28,7 +28,7 @@ namespace App1
 		private int pauseTimeTmp = 2;
 		private static System.Timers.Timer aTimer;
 
-		private int counter = 1;
+		private int counter = 0;
 
         //private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
         //Kas on ikka vaja? https://msdn.microsoft.com/en-us/library/system.diagnostics.stopwatch(v=vs.110).aspx
@@ -60,18 +60,12 @@ namespace App1
 
         private void PrepareTimer()
         {
-            StartPauseBtn.Enabled = false;
-            StartPauseBtn.Text = "Preparing timer...";
-
             // Create a timer with a two second interval.
             aTimer = new System.Timers.Timer(1000);
             // Hook up the Elapsed event for the timer. 
 			aTimer.Elapsed += async ( sender, e ) => await OnTimedEvent();
 			//aTimer.AutoReset = true; //vb pole vaja
 			//aTimer.Enabled = true; //vb pole vaja
-
-            StartPauseBtn.Enabled = true;
-            StartPauseBtn.Text = "Start";
         }
 
 		private void StartTimer()
@@ -89,8 +83,6 @@ namespace App1
 
             //await TaskOfTResult_MethodAsync();
             //currentEx.Text = "finito";
-
-            //Tee midagi taimeri ajaga - j‰ta meelde, muuda tekst nulliks?
         }
 
         private void FindViews()
@@ -112,7 +104,7 @@ namespace App1
 
         private void StartPauseBtn_Click(object sender, EventArgs e)
         {
-			if (toggleStartStop) {
+			if (!toggleStartStop) { //negatiivne, kuna muutuja esialgne v‰‰rtus on false
 				StartTimer();
 			} else {
                 StopTimer();
