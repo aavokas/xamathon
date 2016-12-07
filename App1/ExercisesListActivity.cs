@@ -39,8 +39,8 @@ namespace App1
         private void ExerciseListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var alert = new AlertDialog.Builder(this);
-            alert.SetTitle("tere");
-            alert.SetMessage("placeholder for exercise description");
+            alert.SetTitle(allExerices[e.Position].Title);
+            alert.SetMessage(allExerices[e.Position].Description);
             alert.Show();
         }
     }
