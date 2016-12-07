@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace App1
 {
-	[Activity(Label = "MainMenuActivity", MainLauncher = true)]
+	[Activity(Label = "Exercises", MainLauncher = true)]
     public class MainMenuActivity : Activity
     {
         private Button navToWorkout;

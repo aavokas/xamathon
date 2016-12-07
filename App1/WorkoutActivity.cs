@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace App1
 {
-    [Activity(Label = "WorkoutActivity")]
+    [Activity(Label = "Workout")]
     public class WorkoutActivity : Activity
     {
         private EditText woTime;
