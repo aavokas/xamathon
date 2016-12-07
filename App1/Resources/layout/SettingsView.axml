@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
+    <TextView
+        android:text="Here you can set the workout and rest times in seconds."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13" />
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -19,8 +25,8 @@
             android:textSize="40dp" />
         <EditText
             android:inputType="number"
-            android:text="4"
-            android:layout_width="121.0dp"
+            android:text="40"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
@@ -32,10 +38,22 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-        <EditText
-            android:text="2"
-            android:layout_width="match_parent"
+        <TextView
+            android:text="Rest: "
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:id="@+id/textView12"
+            android:textSize="40dp" />
+        <EditText
+            android:inputType="number"
+            android:text="20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:id="@+id/restTime"
             android:textSize="40dp" />
     </RelativeLayout>
@@ -43,5 +61,5 @@
         android:text="Save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/saveButton" />
 </LinearLayout>

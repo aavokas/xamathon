@@ -24,8 +24,6 @@ namespace App1
         private TextView currentEx;
         private ImageView picture;
 
-		private int woTimeTmp = 4;
-		private int pauseTimeTmp = 2;
 		private static System.Timers.Timer aTimer;
 
 		private int counter = 0;
