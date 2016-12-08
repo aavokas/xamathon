@@ -23,18 +23,15 @@ namespace App1
         private TextView descr;
         private TextView currentEx;
         private ImageView picture;
-
-		private static System.Timers.Timer aTimer;
-
-		private int counter = 0;
-
-        //private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-        //Kas on ikka vaja? https://msdn.microsoft.com/en-us/library/system.diagnostics.stopwatch(v=vs.110).aspx
-        private bool toggleStartStop = false;
-
         private Button StartPauseBtn;
-
         private ExerciseDb Exercises;
+
+        private static System.Timers.Timer aTimer;
+		private int counter = 0;
+        private int WorkoutTimeUse;
+        private int RestTimeUse;
+
+        private bool toggleStartStop = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -54,6 +51,8 @@ namespace App1
             picture.SetImageResource(Resource.Drawable.Icon);
 
             HandleEvent();
+
+            UseSettings();
         }
 
         private void PrepareTimer()
@@ -94,7 +93,6 @@ namespace App1
             pauseTime = FindViewById<EditText>(Resource.Id.restTime);
         }
 
-
         private void HandleEvent()
         {
             StartPauseBtn.Click += StartPauseBtn_Click;
@@ -108,14 +106,22 @@ namespace App1
                 StopTimer();
 			}
 			toggleStartStop = !toggleStartStop;
-
-            //var alert = new AlertDialog.Builder(this);
-            //alert.SetTitle("tere");
-            //alert.SetMessage("tere aavo");
-            //alert.Show();
         }
 
-		private async Task OnTimedEvent()
+        private void UseSettings()
+        {
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("WorkoutSettings", FileCreationMode.Private);
+
+            WorkoutTimeUse = pref.GetInt("WorkoutTimeSetting", 20);
+            RestTimeUse = pref.GetInt("RestTimeSetting", 40);
+
+            var alert = new AlertDialog.Builder(this);
+            alert.SetTitle("tere");
+            alert.SetMessage("workout time: " + WorkoutTimeUse + " rest time: " + RestTimeUse);
+            alert.Show();
+        }
+
+        private async Task OnTimedEvent()
 		{
 			//currentEx.Text = counter.ToString ();
 			await TaskOfTResult_MethodAsync();

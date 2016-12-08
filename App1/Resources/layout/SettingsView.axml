@@ -57,9 +57,4 @@
             android:id="@+id/restTime"
             android:textSize="40dp" />
     </RelativeLayout>
-    <Button
-        android:text="Save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/saveButton" />
 </LinearLayout>
