@@ -32,6 +32,7 @@ namespace App1
         private int RestTimeUse;
 
         private bool toggleStartStop = false;
+        private bool doingWorkout = true;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -129,18 +130,31 @@ namespace App1
 
 		async Task<int> TaskOfTResult_MethodAsync()
 		{
-
 			RunOnUiThread (() => currentEx.Text = counter.ToString());
-			//foreach (var exercise in Exercises.Exercises.Values) {
-			//	currentEx.Text = exercise.Title;
-			//	descr.Text = exercise.Description;
-			//	await Task.Run(() => System.Threading.Thread.Sleep(1000));
-			//	//var alert = new AlertDialog.Builder(this);
-				//alert.SetTitle("tere");
-				//alert.SetMessage(exercise.Title);
-				//alert.Show();
-			//}
-			return 1;
+
+            if (doingWorkout)
+            {
+                //tee harjutusi kuni WorkoutTimeUse väärtuseni
+
+                //doingWorkout = false;
+            }
+            else
+            {
+                //tee harjutusi kuni RestTimeUse väärtuseni
+
+                //doingWorkout = true;
+            }
+
+            //foreach (var exercise in Exercises.Exercises.Values) {
+            //	currentEx.Text = exercise.Title;
+            //	descr.Text = exercise.Description;
+            //	await Task.Run(() => System.Threading.Thread.Sleep(1000));
+            //	//var alert = new AlertDialog.Builder(this);
+            //alert.SetTitle("tere");
+            //alert.SetMessage(exercise.Title);
+            //alert.Show();
+            //}
+            return 1; //milleks?
 		}
     }
 }
