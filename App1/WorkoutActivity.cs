@@ -69,14 +69,12 @@ namespace App1
 		{
 			aTimer.Start ();
             StartPauseBtn.Text = "Stop";
-            //stopwatch.Start ();
         }
 
         private void StopTimer()
         {
             aTimer.Stop();
             StartPauseBtn.Text = "Start";
-            //stopwatch.Stop ();
 
             //await TaskOfTResult_MethodAsync();
             //currentEx.Text = "finito";

@@ -17,7 +17,6 @@ namespace App1
     [Activity(Label = "Settings")]
     public class SettingsActivity : Activity
     {
-        private Button SaveBtn;
         private TextView WorkoutTimeSet;
         private TextView RestTimeSet;
 
@@ -39,7 +38,6 @@ namespace App1
 
         private void HandleEvent()
         {
-            //SaveBtn.Click += SaveBtn_Click;
             WorkoutTimeSet.TextChanged += WorkoutTimeSet_TextChanged;
             RestTimeSet.TextChanged += RestTimeSet_TextChanged;
         }
