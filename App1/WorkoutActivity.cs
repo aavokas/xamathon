@@ -132,18 +132,26 @@ namespace App1
 		{
 			RunOnUiThread (() => currentEx.Text = counter.ToString());
 
-            if (doingWorkout)
+            /*if (doingWorkout)
             {
                 //tee harjutusi kuni WorkoutTimeUse v‰‰rtuseni
-
-                //doingWorkout = false;
+                if (counter == WorkoutTimeUse)
+                {
+                    StopTimer();
+                    doingWorkout = false;
+                    StartTimer();
+                }
             }
             else
             {
                 //tee harjutusi kuni RestTimeUse v‰‰rtuseni
-
-                //doingWorkout = true;
-            }
+                if (counter == RestTimeUse)
+                {
+                    StopTimer();
+                    doingWorkout = true;
+                    StartTimer();
+                }
+            }*/
 
             //foreach (var exercise in Exercises.Exercises.Values) {
             //	currentEx.Text = exercise.Title;
